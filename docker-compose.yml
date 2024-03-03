@@ -1,5 +1,6 @@
 services:
   backend:
+    image: muhannadjam/quirknotes_backend:latest
     build:
       context: .
       dockerfile: Dockerfile_backend
@@ -10,6 +11,10 @@ services:
       - ENV=Docker
     depends_on:
       - mongodb
+  frontend:
+    image: muhannadjam/quirknotes_frontend:latest
+    ports:
+      - "3000:80"
 
   mongodb:
     image: mongo:latest
