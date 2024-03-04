@@ -13,8 +13,14 @@ services:
       - mongodb
   frontend:
     image: muhannadjam/quirknotes_frontend:latest
+    build:
+      context: .
+      dockerfile: Dockerfile_frontend
+      target: frontend
     ports:
       - "3000:80"
+    environment:
+      - ENV=Docker
 
   mongodb:
     image: mongo:latest
